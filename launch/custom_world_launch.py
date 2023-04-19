@@ -37,7 +37,7 @@ def generate_launch_description():
     world = os.path.join(
         '/usr/share/gazebo-11',
         'worlds',
-        'road.world'
+        'stacks.world'
     )
 
     os.environ["TURTLEBOT3_MODEL"] = "burger"
@@ -93,6 +93,12 @@ def generate_launch_description():
         name="teleop",
     )
 
+    rviz = Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz"
+    )
+
     ld = LaunchDescription()
 
     # Add the commands to the launch description
@@ -100,6 +106,7 @@ def generate_launch_description():
     ld.add_action(gzclient_cmd)
     ld.add_action(robot_state_publisher_cmd)
     ld.add_action(spawn_turtlebot_cmd)
+    ld.add_action(rviz)
     ld.add_action(turtlebot_controller)
     ld.add_action(teleop)
 
