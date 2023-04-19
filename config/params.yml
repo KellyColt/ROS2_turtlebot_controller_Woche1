@@ -1,0 +1,5 @@
+listener:
+  ros__parameters:
+    topic: "scan"
+    message_pack: "sensor_msgs"
+    message_type: "LaserScan"
