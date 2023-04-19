@@ -1,5 +1,6 @@
 listener:
   ros__parameters:
-    topic: "scan"
+    topic_name: "/scan"
     message_pack: "sensor_msgs"
     message_type: "LaserScan"
+    queue_size: 10

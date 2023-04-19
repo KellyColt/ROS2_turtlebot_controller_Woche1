@@ -28,6 +28,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'odom_listener = turtlebot_controller.odom_sub:main',
+            'scan_listener = turtlebot_controller.scan_sub:main'
         ],
     },
 )
