@@ -18,7 +18,7 @@ class MinimalSubscriber(Node):
         # self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg: LaserScan):
-        self.get_logger().info('I heard: "%s"' % msg.header.frame_id)
+        self.get_logger().info(f'I heard: "{msg.range_min}"', once=True)
 
 
 def main(args=None):

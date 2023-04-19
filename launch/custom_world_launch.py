@@ -73,7 +73,7 @@ def generate_launch_description():
     )
 
     config = os.path.join(
-        get_package_share_directory('turtlebot3_controller'),
+        get_package_share_directory('turtlebot_controller'),
         'config',
         'params.yml'
     )
@@ -81,8 +81,16 @@ def generate_launch_description():
     turtlebot_controller = Node(
         package='turtlebot_controller',
         name='controller',
-        executable='listener',
-        parameters=[config]
+        executable='scan_listener',
+        parameters=[config],
+        ros_arguments=['--log-level debug']
+    )
+
+    teleop = Node(
+        prefix='gnome-terminal -x',
+        package="teleop_twist_keyboard",
+        executable="teleop_twist_keyboard",
+        name="teleop",
     )
 
     ld = LaunchDescription()
@@ -93,5 +101,6 @@ def generate_launch_description():
     ld.add_action(robot_state_publisher_cmd)
     ld.add_action(spawn_turtlebot_cmd)
     ld.add_action(turtlebot_controller)
+    ld.add_action(teleop)
 
     return ld
